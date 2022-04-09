@@ -58,9 +58,10 @@ public class TourDAOTest {
 		existTour.setProductCode("3333333333");
 		
 		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-	Date publishDate = dateFormat.parse("03/28/2019");
-	existTour.setPublishDate(publishDate);
+		Date publishDate = dateFormat.parse("03/28/2019");
+		existTour.setPublishDate(publishDate);
 	
+        //All images size reduced to 350x231 pixels
 	String imagePath = "C:/Users/Iryna/Project-wowtraveldb/WOWTravel/WebContent/images/ArmaniHotelDubaiDubaisize.jpg";
 	
 	byte[] imageBytes = Files.readAllBytes(Paths.get(imagePath));
