@@ -45,7 +45,7 @@ public class TourDAOTest {
 		category.setCategoryId(3); 
 		existTour.setCategory(category);
 		
-		existTour.setTitle("Armani Hotel Dubai");
+		existTour.setTitle("For example, Armani Hotel Dubai");
 		existTour.setCityCountry("Dubai, United Arab Emirates");
 		existTour.setDepiction("Envisioned by fashion icon Giorgio Armani, this hotel has a private entrance and occupies 11 floors of Dubai’s iconic skyscraper, Burj Khalifa. It has a deluxe spa and has direct access to Dubai Mall.\\r\\n\" + \r\n" + 
 				"				\"\\r\\n\" + \r\n" + 
@@ -68,7 +68,7 @@ public class TourDAOTest {
 
 	Tour updatedTour = tourDao.update(existTour);
 	
-	assertEquals(updatedTour.getTitle(), "Armani Hotel Dubai");
+	assertEquals(updatedTour.getTitle(), "For example, Armani Hotel Dubai");
 	
 	}	
 	
@@ -79,7 +79,7 @@ public class TourDAOTest {
 		category.setCategoryId(1);
 		newTour.setCategory(category);
 
-		newTour.setTitle("Sheraton Grand Hotel & Spa");
+		newTour.setTitle("For example, Sheraton Grand Hotel & Spa");
 		newTour.setCityCountry("Edinburgh United Kingdom");
 		newTour.setDepiction("Overlooking Edinburgh Castle, the Sheraton Grand Hotel & Spa is located in the financial district, next to the West End business and entertainment area and a five-minute walk from Princes Street, 500 m from Edinburgh Castle.\r\n" + 
 				"\r\n" + 
@@ -160,7 +160,7 @@ public void testListAll( ) {
 //	category.setCategoryId(2);
 //	newTour.setCategory(category);
 	
-//	newTour.setTitle("GRAND HOTELS 5");
+//	newTour.setTitle("For example, GRAND HOTELS");
 //	newTour.setCityCountry("New York");
 //	newTour.setDescription("Beautiful");
 //	newTour.setPrice(2000.00f);
@@ -183,7 +183,7 @@ public void testListAll( ) {
 
 @Test
 public void testByTitleNotExist() {
-	String title = "IBEROSTAR";
+	String title = "For example, IBEROSTAR";
 	Tour tour = tourDao.findByTitle(title);
 	
 	assertNull(tour);
@@ -191,7 +191,7 @@ public void testByTitleNotExist() {
 
 @Test
 public void testByTitleExist() {
-	String title = "IBEROSTA";
+	String title = "For example, IIBEROSTAR";
 	Tour tour = tourDao.findByTitle(title);
 	
 	System.out.println(tour.getCityCountry());
@@ -218,7 +218,7 @@ public void testByTitleExist() {
 	
 	@Test
 	public void testSearchTourInTitle() {
-		String keyword = "Le Meridien Vienna";
+		String keyword = "For example, Le Meridien Vienna";
 		List<Tour> result = tourDao.search(keyword);
 		
 		for (Tour aTour : result) {
