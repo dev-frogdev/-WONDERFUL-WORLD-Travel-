@@ -41,63 +41,52 @@ public class TourDAOTest {
 		Tour existTour = new Tour();
 		existTour.setTourId(49);
 		 
-		Category category = new Category("Shopping");
+		Category someCategory = new Category("Shopping");
 		category.setCategoryId(3); 
 		existTour.setCategory(category);
 		
-		existTour.setTitle("For example, Armani Hotel Dubai");
-		existTour.setCityCountry("Dubai, United Arab Emirates");
-		existTour.setDepiction("Envisioned by fashion icon Giorgio Armani, this hotel has a private entrance and occupies 11 floors of Dubai’s iconic skyscraper, Burj Khalifa. It has a deluxe spa and has direct access to Dubai Mall.\\r\\n\" + \r\n" + 
-				"				\"\\r\\n\" + \r\n" + 
-				"				\"Rooms of understated elegance feature curved lines are decorated with Japanese tatami and luxury fabrics. Modern appliances include flat-screen TVs with DVD, iPod docking stations and free WiFi.\\r\\n\" + \r\n" + 
-				"				\"\\r\\n\" + \r\n" + 
-				"				\"Armani Hotel Dubai provides sophisticated dining options in each of its 7 restaurants. Armani Hashi serves Japanese cuisine with a modern twist and renowned Armani Privé hosts the most popular club nights in town.\\r\\n\" + \r\n" + 
-				"				\"\\r\\n\" + \r\n" + 
-				"				\"Guests can relax at the extensive Armani Spa, offering personal treatments and sequential bathing. Dubai International Airport is a 20-minute drive from the property.");
-		existTour.setPrice(7000.00f);
-		existTour.setProductCode("3333333333");
+		existTour.setExampleTitle("Kharkiv Palace Hotel");
+		existTour.setCityCountry("Kharkiv, Ukraine");
+		existTour.setDepiction("This 5-star hotel , which 30-minute drive from Kharkiv Airport.\\r\\n\" + \r\n" + 
+				"\"\\r\\n\" + \r\n" + "\"All elegant rooms at Kharkiv Palace Hotel are decorated in a contemporary style. The Kharkiv Palace Hotel has several dining options, including the Terrace Restaurant with Terrace and the Pacific Spoon Restaurant. Drinks are available in the rooftop Sky Lounge with panoramic city views. Guests can also visit the swimming pool and work out at the fitness center and more.");
+		existTour.setSomePrice(7000.00f);
+		existTour.setSomeProductCode("3333333333");
 		
 		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-		Date publishDate = dateFormat.parse("03/28/2019");
+		Date somePublishDate = dateFormat.parse("03/28/2019");
 		existTour.setPublishDate(publishDate);
-	
-        //All images size reduced to 350x231 pixels
-	String imagePath = "C:/Users/Iryna/Project-wowtraveldb/WOWTravel/WebContent/images/ArmaniHotelDubaiDubaisize.jpg";
+
+	String imagePath = "C:/Users/Iryna/Project-wowtraveldb/WOWTravel/WebContent/images/KharkivPalaceHotel.jpg";
 	
 	byte[] imageBytes = Files.readAllBytes(Paths.get(imagePath));
 	existTour.setImage(imageBytes);	
 
 	Tour updatedTour = tourDao.update(existTour);
 	
-	assertEquals(updatedTour.getTitle(), "For example, Armani Hotel Dubai");
+	assertEquals(updatedTour.getTitle(), "Kharkiv Palace Hotel");
 	
 	}	
 	
 	@Test
 	public void testCreateTour() throws ParseException, IOException {
 		Tour newTour = new Tour();
-		Category category = new Category("Excursion");
+		Category someCategory = new Category("Excursion");
 		category.setCategoryId(1);
 		newTour.setCategory(category);
 
-		newTour.setTitle("For example, Sheraton Grand Hotel & Spa");
-		newTour.setCityCountry("Edinburgh United Kingdom");
-		newTour.setDepiction("Overlooking Edinburgh Castle, the Sheraton Grand Hotel & Spa is located in the financial district, next to the West End business and entertainment area and a five-minute walk from Princes Street, 500 m from Edinburgh Castle.\r\n" + 
-				"\r\n" + 
-				"The luxurious, elegant rooms provide free wireless Internet access, 24-hour room service, interactive satellite flat-screen TV, small sitting areas, and bathrooms with a separate bath and walk-in shower. The large air-conditioned rooms have beautiful furnishings and mood lighting.\r\n" + 
-				"\r\n" + 
-				"At One Spa, guests can enjoy complimentary use of the 19 m swimming pool, gym and fitness studios, and can indulge in a variety of beauty and spa treatments during their stay (must be booked prior to arrival). The unique and recently renovated Thermal Suite and rooftop Hydropool experiences, known as Escape at One, can be enjoyed at a preferential rate. These should be booked in advance prior arrival at the hotel, together with the Thermal Suite and Rooftop Hydro Pool, which are charged separately.\r\n" + 
-				"\r\n" + 
-				"A modern Scottish menu and unique Gin Tasting experience is available in the vibrant One Square Bar + Brasserie.");
-		newTour.setPrice(7000.00f);
-		newTour.setProductCode("7737773773");
+		newTour.setExampleTitle("Kharkiv Hotel");
+		newTour.setCityCountry("Kharkiv, Ukraine");
+		newTour.setDepiction("This is 4-star hotel, which provides direct access to Kharkiv International Airport (12 km).\\r\\n\" + \r\n" + 
+				"\"\\r\\n\" + \r\n" + "\"After crossing the threshold of the Kharkiv Hotel, guests will find themselves in a large and spacious lobby. All rooms are decorated in a modern and classic style.");
+		newTour.setSomePrice(7000.00f);
+		newTour.setSomeProductCode("7737773773");
 		
 
 		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-		Date publishDate = dateFormat.parse("10/31/2020");
+		Date somePublishDate = dateFormat.parse("10/31/2020");
 		newTour.setPublishDate(publishDate);
 
-		String imagePath = "C:/Users/Iryna/Project-wowtraveldb/WOWTravel/WebContent/images/SheratonGrandHotelEdynburgsize.jpg";
+		String imagePath = "C:/Users/Iryna/Project-wowtraveldb/WOWTravel/WebContent/images/KharkivHotel.jpg";
 
 		byte[] imageBytes = Files.readAllBytes(Paths.get(imagePath));
 		newTour.setImage(imageBytes);	
@@ -154,37 +143,9 @@ public void testListAll( ) {
 	assertFalse(listTours.isEmpty());
 	}
 
-//@Test
-//public void testCreate2ndTour() throws ParseException, IOException {
-//	Tour newTour = new Tour();
-//	Category category = new Category("Shopping");
-//	category.setCategoryId(2);
-//	newTour.setCategory(category);
-	
-//	newTour.setTitle("For example, GRAND HOTELS");
-//	newTour.setCityCountry("New York");
-//	newTour.setDescription("Beautiful");
-//	newTour.setPrice(2000.00f);
-//	newTour.setProductCode("1111111112");
-	
-//	DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-//Date publishDate = dateFormat.parse("02/07/2019");
-//newTour.setPublishDate(publishDate);
-
-//String imagePath = "D:\\images\\rest\\IberostarDominicana.jpg";
-
-//byte[] imageBytes = Files.readAllBytes(Paths.get(imagePath));
-//	newTour.setImage(imageBytes);	
-
-//Tour createdTour = tourDao.create(newTour);
-
-//assertTrue(createdTour.getTourId() > 0);
-
-//}
-
 @Test
 public void testByTitleNotExist() {
-	String title = "For example, IBEROSTAR";
+	String someTitle = "KHARKIV PALACE HOTEL";
 	Tour tour = tourDao.findByTitle(title);
 	
 	assertNull(tour);
@@ -192,7 +153,7 @@ public void testByTitleNotExist() {
 
 @Test
 public void testByTitleExist() {
-	String title = "For example, IIBEROSTAR";
+	String someTitle = "KHARKIV HOTEL";
 	Tour tour = tourDao.findByTitle(title);
 	
 	System.out.println(tour.getCityCountry());
@@ -219,7 +180,7 @@ public void testByTitleExist() {
 	
 	@Test
 	public void testSearchTourInTitle() {
-		String keyword = "For example, Le Meridien Vienna";
+		String keyword = "Kharkiv Hotel";
 		List<Tour> result = tourDao.search(keyword);
 		
 		for (Tour aTour : result) {
@@ -231,7 +192,7 @@ public void testByTitleExist() {
 	
 	@Test
 	public void testSearchTourInCityCountry() {
-		String keyword = "Vienna, Austria";
+		String keyword = "Kharkiv, Ukraine";
 		List<Tour> result = tourDao.search(keyword);
 		
 		for (Tour aTour : result) {
@@ -243,7 +204,7 @@ public void testByTitleExist() {
 	
 	@Test
 	public void testSearchTourInDepiction() {
-		String keyword = "Located right on the Ringstrasse in the heart of Vienna";
+		String keyword = "Located in the city center";
 		List<Tour> result = tourDao.search(keyword);
 		
 		for (Tour aTour : result) {
