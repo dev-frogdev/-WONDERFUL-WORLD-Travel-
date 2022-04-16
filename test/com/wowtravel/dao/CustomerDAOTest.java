@@ -28,13 +28,13 @@ public class CustomerDAOTest {
 		Customer customer = new Customer();
 		customer.setEmail("privet@java.ua");
 		customer.setFullname("Iryna");
-		customer.setPassportNumber("EA1111111");
-		customer.setPassportCountry("Ukraine");
-		customer.setDateOfBirth("07/07/1989");
+		customer.setSomePassportNumber("SOME0000000");
+		customer.setSomePassportCountry("Ukraine");
+		customer.setSomeDateOfBirth("07/07/1989");
 		customer.setPassword("helloworld");
-		customer.setPhoneNumber("0670000000");
-		customer.setPassportDate("07/07/2007");
-		customer.setPassportAuthority("3707");
+		customer.setSomePhoneNumber("0000000000");
+		customer.setSomePassportDate("07/07/2007");
+		customer.setSomePassportAuthority("3707");
 		
 		Customer savedCustomer = customerDao.create(customer);
 		
@@ -64,21 +64,21 @@ public class CustomerDAOTest {
 		customer.setPassword(password);		
 		Customer updatedCustomers = customerDao.update(customer);
 		
-		String passportDate = "03/07/1989";
-		customer.setPassportDate(passportDate);
+		String somePassportDate = "03/07/2007";
+		customer.setPassportDate(somePassportDate);
 		Customer updatedCustomerssss = customerDao.update(customer);
 		
-		String dateOfBirth = "03/07/1989";
-		customer.setDateOfBirth(dateOfBirth);
+		String someDateOfBirth = "03/07/1989";
+		customer.setDateOfBirth(someDateOfBirth);
 		Customer updatedCustomersssssss = customerDao.update(customer);
 		
 		assertTrue(updatedCustomer.getFullname().equals(fullname));
 
 		assertTrue(updatedCustomerss.getEmail().equals(email));
 		
-		assertTrue(updatedCustomersssssss.getDateOfBirth().equals(dateOfBirth));
+		assertTrue(updatedCustomersssssss.getDateOfBirth().equals(someDateOfBirth));
 		
-		assertTrue(updatedCustomerssss.getPassportDate().equals(passportDate));
+		assertTrue(updatedCustomerssss.getPassportDate().equals(somePassportDate));
 		
 		assertTrue(updatedCustomers.getPassword().equals(password));
 	}
@@ -110,8 +110,8 @@ public class CustomerDAOTest {
 	
 	@Test
 	public void testFindByEmail() {
-		String email = "privet2@java.ua";
-		Customer customer = customerDao.findByEmail(email);
+		String someEmail = "privet2@java.ua";
+		Customer customer = customerDao.findByEmail(someEmail);
 		
 		assertNotNull(customer);
 		
