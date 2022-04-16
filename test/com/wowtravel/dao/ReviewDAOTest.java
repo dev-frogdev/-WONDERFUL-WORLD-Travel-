@@ -42,7 +42,7 @@ public class ReviewDAOTest {
 		
 		review.setHeadline("This is a very good tour!");
 		review.setRating(3);
-		review.setComment("I have just read this tour. Very good.");
+		review.setComment("I just read about this tour. This is a very good tour!");
 		
 		Review savedReview = reviewDao.create(review);
 		
