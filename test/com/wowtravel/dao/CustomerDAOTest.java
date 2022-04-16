@@ -65,11 +65,11 @@ public class CustomerDAOTest {
 		Customer updatedCustomers = customerDao.update(customer);
 		
 		String somePassportDate = "03/07/2007";
-		customer.setPassportDate(somePassportDate);
+		customer.setSomePassportDate(somePassportDate);
 		Customer updatedCustomerssss = customerDao.update(customer);
 		
 		String someDateOfBirth = "03/07/1989";
-		customer.setDateOfBirth(someDateOfBirth);
+		customer.setSomeDateOfBirth(someDateOfBirth);
 		Customer updatedCustomersssssss = customerDao.update(customer);
 		
 		assertTrue(updatedCustomer.getFullname().equals(fullname));
@@ -110,8 +110,8 @@ public class CustomerDAOTest {
 	
 	@Test
 	public void testFindByEmail() {
-		String someEmail = "privet2@java.ua";
-		Customer customer = customerDao.findByEmail(someEmail);
+		String email = "privet2@java.ua";
+		Customer customer = customerDao.findByEmail(email);
 		
 		assertNotNull(customer);
 		
