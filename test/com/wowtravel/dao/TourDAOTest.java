@@ -39,7 +39,7 @@ public class TourDAOTest {
 	@Test
 	public void testUpdateTour() throws ParseException, IOException {
 		Tour existTour = new Tour();
-		existTour.setTourId(49);
+		existTour.setTourId(1);
 		 
 		Category someCategory = new Category("Shopping");
 		category.setCategoryId(3); 
@@ -56,14 +56,14 @@ public class TourDAOTest {
 		Date somePublishDate = dateFormat.parse("03/28/2019");
 		existTour.setPublishDate(publishDate);
 
-	String imagePath = "C:/Users/Iryna/Project-wowtraveldb/WOWTravel/WebContent/images/KharkivPalaceHotel.jpg";
+		String imagePath = "C:/Users/Iryna/Project-wowtraveldb/WOWTravel/WebContent/images/KharkivPalaceHotel.jpg";
 	
-	byte[] imageBytes = Files.readAllBytes(Paths.get(imagePath));
-	existTour.setImage(imageBytes);	
+		byte[] imageBytes = Files.readAllBytes(Paths.get(imagePath));
+		existTour.setImage(imageBytes);	
 
-	Tour updatedTour = tourDao.update(existTour);
+		Tour updatedTour = tourDao.update(existTour);
 	
-	assertEquals(updatedTour.getTitle(), "Kharkiv Palace Hotel");
+		assertEquals(updatedTour.getTitle(), "Kharkiv Palace Hotel");
 	
 	}	
 	
@@ -77,11 +77,10 @@ public class TourDAOTest {
 		newTour.setExampleTitle("Kharkiv Hotel");
 		newTour.setCityCountry("Kharkiv, Ukraine");
 		newTour.setDepiction("This is 4-star hotel, which provides direct access to Kharkiv International Airport (12 km).\\r\\n\" + \r\n" + 
-				"\"\\r\\n\" + \r\n" + "\"After crossing the threshold of the Kharkiv Hotel, guests will find themselves in a large and spacious lobby. All rooms are decorated in a modern and classic style.");
+			"\"\\r\\n\" + \r\n" + "\"After crossing the threshold of the Kharkiv Hotel, guests will find themselves in a large and spacious lobby. All rooms are decorated in a modern and classic style.");
 		newTour.setSomePrice(7000.00f);
 		newTour.setSomeProductCode("7737773773");
 		
-
 		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		Date somePublishDate = dateFormat.parse("10/31/2020");
 		newTour.setPublishDate(publishDate);
@@ -97,70 +96,76 @@ public class TourDAOTest {
 
 	}
 
-
 	@Test
 	public void testGetTourFail() {
-	Integer tourId = 99;
-	Tour tour = tourDao.get(tourId);
+		
+		Integer tourId = 100;
+		
+		Tour tour = tourDao.get(tourId);
 	
-	assertNull(tour);
+		assertNull(tour);
 	}
-	
-	
+		
 	@Test
 	public void testGetTourSuccess() {
-	Integer tourId = 2;
-	Tour tour = tourDao.get(tourId);
+		Integer tourId = 2;
+		
+		Tour tour = tourDao.get(tourId);
 	
-	assertNotNull(tour);
+		assertNotNull(tour);
 	}
 	
-@Test(expected = EntityNotFoundException.class)
-public void testDeleteTourFail() {
-Integer toutId = 100;
-tourDao.delete(toutId);
-assertFalse(false);
-}
-
-@Test
-public void testDeleteTourSuccess() {
-Integer tourId = 0;
-tourDao.delete(tourId);
-
-assertTrue(true);
-}
-
-@Test
-public void testListAll( ) {
-	List<Tour> listTours = tourDao.listAll();
-	
-
-
-	for (Tour aTour : listTours) {
-		System.out.println(aTour.getTitle() + " - " + aTour.getCityCountry());
-	}
-	
-	assertFalse(listTours.isEmpty());
+	@Test(expected = EntityNotFoundException.class)
+	public void testDeleteTourFail() {
+		Integer tourId = 100;
+		
+		tourDao.delete(toutId);
+		
+		assertFalse(false);
 	}
 
-@Test
-public void testByTitleNotExist() {
-	String someTitle = "KHARKIV PALACE HOTEL";
-	Tour tour = tourDao.findByTitle(title);
-	
-	assertNull(tour);
-}
+	@Test
+	public void testDeleteTourSuccess() {
+		Integer tourId = 0;
+		
+		tourDao.delete(tourId);
 
-@Test
-public void testByTitleExist() {
-	String someTitle = "KHARKIV HOTEL";
-	Tour tour = tourDao.findByTitle(title);
+		assertTrue(true);
+	}
+
+	@Test
+	public void testListAll( ) {
+		List<Tour> listTours = tourDao.listAll();
 	
-	System.out.println(tour.getCityCountry());
-	System.out.println(tour.getPrice());
+		for (Tour aTour : listTours) {
+		
+			System.out.println(aTour.getTitle() + " - " + aTour.getCityCountry());
+		}
 	
-	assertNotNull(tour);
-}
+		assertFalse(listTours.isEmpty());
+	}
+
+	@Test
+	public void testByTitleNotExist() {
+		String someTitle = "KHARKIV PALACE HOTEL";
+		
+		Tour tour = tourDao.findByTitle(title);
+	
+		assertNull(tour);
+	}
+
+	@Test
+	public void testByTitleExist() {
+		String someTitle = "KHARKIV HOTEL";
+		
+		Tour tour = tourDao.findByTitle(title);
+	
+		System.out.println(tour.getCityCountry());
+		
+		System.out.println(tour.getPrice());
+	
+		assertNotNull(tour);
+	}
 
 	@Test
 	public void testCount() {
@@ -172,15 +177,19 @@ public void testByTitleExist() {
 	@Test
 	public void testListNewTours() {
 		List<Tour> listNewTours = tourDao.listNewTours();
+		
 		for (Tour aTour : listNewTours) {
+		
 			System.out.println(aTour.getTitle() + " - " + aTour.getPublishDate());
 		}
+		
 		assertEquals(1, listNewTours.size());
 	}
 	
 	@Test
 	public void testSearchTourInTitle() {
 		String keyword = "Kharkiv Hotel";
+		
 		List<Tour> result = tourDao.search(keyword);
 		
 		for (Tour aTour : result) {
@@ -193,6 +202,7 @@ public void testByTitleExist() {
 	@Test
 	public void testSearchTourInCityCountry() {
 		String keyword = "Kharkiv, Ukraine";
+		
 		List<Tour> result = tourDao.search(keyword);
 		
 		for (Tour aTour : result) {
@@ -205,6 +215,7 @@ public void testByTitleExist() {
 	@Test
 	public void testSearchTourInDepiction() {
 		String keyword = "Located in the city center";
+		
 		List<Tour> result = tourDao.search(keyword);
 		
 		for (Tour aTour : result) {
@@ -226,6 +237,7 @@ public void testByTitleExist() {
 	@Test
 	public void testListCountByCategory() {
 		List<Tour> topBestSellingTours = tourDao.listBestSellingTours();
+		
 		for (Tour tour : topBestSellingTours) {
 			System.out.println(tour.getTitle());
 		}
