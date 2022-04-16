@@ -39,7 +39,7 @@ class OrderDAOTest {
 	
 		order.setCustomer(customer);
 		order.setFullname("Iryna");
-		order.setPhoneNumber("0670000000");
+		order.setSomePhoneNumber("0000000000");
 		order.setSendTo("Kharkiv, Ukraine");
 				
 		Set<OrderDetail> orderDetails = new HashSet<>();
@@ -115,7 +115,7 @@ class OrderDAOTest {
 		Integer orderId = 1;
 		TourOrder order = orderDAO.get(orderId);
 		System.out.println(order.getFullname());
-		System.out.println(order.getPhoneNumber());
+		System.out.println(order.getSomePhoneNumber());
 		System.out.println(order.getSendTo());
 		System.out.println(order.getOrderStatus());
 		System.out.println(order.getOrderTotal());
@@ -127,7 +127,7 @@ class OrderDAOTest {
 	@Test
 	public void testGetByIdAndCustomerNull() {
 		Integer orderId = 10;
-		Integer customerId = 99;
+		Integer customerId = 100;
 		
 		TourOrder order = orderDAO.get(orderId, customerId);
 		
@@ -152,12 +152,11 @@ class OrderDAOTest {
 		TourOrder order = orderDAO.get(orderId);
 		
 		assertNull(order);
-		}
+	}
 	
 	@Test
 	void testListAll() {
 		List<TourOrder> listOrders = orderDAO.listAll();
-		
 		
 		  for (TourOrder order : listOrders) { 
 			  System.out.println(order.getOrderId() +
@@ -170,6 +169,7 @@ class OrderDAOTest {
 				  System.out.println("\t" + tour.getTitle() + " - " + quantity + " - " + subtotal);
 			  }
 		  }
+		
 		 assertTrue(listOrders.size() > 0);
 	}
 	
@@ -180,7 +180,7 @@ class OrderDAOTest {
 		
 		assertTrue(listOrders.isEmpty());
 	
-		}
+	}
 	
 	@Test
 	public void testListByCustomerHaveOrders() {
@@ -189,7 +189,7 @@ class OrderDAOTest {
 		
 		assertTrue(listOrders.size() > 0);
 	
-		}
+	}
 	
 	@Test
 	void testCount() {
@@ -202,6 +202,6 @@ class OrderDAOTest {
 		List<TourOrder> recentOrders = orderDAO.listMostRecentSales();
 		
 		assertEquals(3, recentOrders.size());
-	}
+		}
 
-}
+	}
