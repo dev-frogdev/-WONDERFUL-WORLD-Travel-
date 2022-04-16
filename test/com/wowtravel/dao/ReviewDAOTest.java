@@ -101,7 +101,7 @@ public class ReviewDAOTest {
 	@Test
 	public void findByCustomerAndTourFound() {
 		Integer customerId = 4;
-		Integer tourId = 18;
+		Integer tourId = 37;
 		
 		Review result = reviewDao.findByCustomerAndTour(customerId, tourId);
 		
