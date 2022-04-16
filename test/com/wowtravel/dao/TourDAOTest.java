@@ -39,7 +39,7 @@ public class TourDAOTest {
 	@Test
 	public void testUpdateTour() throws ParseException, IOException {
 		Tour existTour = new Tour();
-		existTour.setTourId(1);
+		existTour.setTourId(49);
 		 
 		Category someCategory = new Category("Shopping");
 		category.setCategoryId(3); 
