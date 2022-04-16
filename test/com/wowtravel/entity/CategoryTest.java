@@ -8,7 +8,6 @@ import com.wowtravel.entity.Category;
 public class CategoryTest {
 
 	public static void main(String[] args) {
-		
 		Category newCategory = new Category("Shopping");
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("WOWTravel");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
