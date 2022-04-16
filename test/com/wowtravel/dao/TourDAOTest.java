@@ -171,7 +171,7 @@ public class TourDAOTest {
 	public void testCount() {
 		long totalTours = tourDao.count();
 
-		assertEquals(4, totalTours);
+		assertEquals(2, totalTours);
 	}
 
 	@Test
@@ -214,7 +214,7 @@ public class TourDAOTest {
 	
 	@Test
 	public void testSearchTourInDepiction() {
-		String keyword = "Located in the city center";
+		String keyword = "Located in the center of Kharkiv";
 		
 		List<Tour> result = tourDao.search(keyword);
 		
